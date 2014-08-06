@@ -75,6 +75,21 @@ function concatReverse(array) {
  }
 
  /**
+ * Array.prototype.some()
+ *
+ * @param {callback(value, index, array)[, thisArg]} Callback function to be executed on every element
+ * @returns {boolean} Returns true as long as one of the elements passes the callback test. Otherwise returns false
+ */
+ function useSome() {
+ 	function largerThan10(el, i, array) {
+ 		return (el >= 10);
+ 	}
+
+ 	console.log([1, 2, 3].some(largerThan10)); //Outputs false;
+ 	console.log([10, 2, 3].some(largerThan10)); //Outputs true;
+ }
+
+ /**
  * Array.prototype.filter()
  *
  * @param {callback(value, index, array)[, thisArg]} Callback function to be executed on every element
@@ -114,7 +129,7 @@ function concatReverse(array) {
  		return el + 1;
  	}
 
- 	console.log([1, 2, 3].forEach(addOne)); //Outputs [2, 3, 4]. Unlike forEach, the value returned from callback is added to the same index of a new array.
+ 	console.log([1, 2, 3].map(addOne)); //Outputs [2, 3, 4]. Unlike forEach, the value returned from callback is added to the same index of a new array.
  }
 
 //Variants: map() can also be used on strings or array-like objects. 
@@ -124,6 +139,19 @@ function useMapString(str) {
 	})
 	return codeArray;
 }
+
+ /**
+ * Array.prototype.sort()
+ *
+ * @param {[callback(a, b)]} Callback function to do the comparison.
+ * @returns {array} Returns the udpated array. 
+ */
+ function useSort() {
+ 	var array = [4, 2, 3, 1];
+
+ 	console.log(array.sort()); //Outputs [1, 2, 3, 4]. Unlike forEach, the value returned from callback is added to the same index of a new array.
+ 	console.log(array)
+ }
 
  /**
  * Array.prototype.reduce()
@@ -191,6 +219,38 @@ function useMapString(str) {
  	console.log(array.lastIndexOf('a', -10)); //Outputs -1. When even the calculated index is negative, returns -1.
 
  }
+
+ /**
+ * Array.prototype.slice(beginIndex[, endIndex])
+ *
+ * @param {index} Pass in the index where to begin extraction and optionally the index to end extraction (not including).
+ * @returns {array} Returns a new array of the sliced elements.
+ */
+ function useSlice() {
+ 	var array = ['a', 'b', 'c', 'd'];
+
+ 	console.log(array.slice(1)); //Outputs ["b", "c", "d"]
+ 	console.log(array.slice(1, 3)); //Outputs ["b", "c"]
+ 	console.log(array.slice(1, -1)); //Outputs ["b", "c"]
+ 	console.log(array.slice(-1)); //Outputs ["d"]
+ }
+
+ /**
+ * Array.prototype.splice(index, howMany[, value1, value2, ...valuen])
+ *
+ * @param {index} Pass in the index where to start changing the array.
+ * @param {number} The number of old array elements to remove.
+ * @param {value1, value2, ...valuen} Elements to add to the array. If not provided, simply removing without adding the old array.
+ * @returns {array} Returns an array of the removed elements.
+ */
+ function useSplice() {
+ 	var array = ['a', 'b', 'c', 'd'];
+
+ 	console.log(array.splice(1, 1, 'miu')); //Returns "b". array now becomes ["a", "miu", "c", "d"]
+ }
+
+
+
 
  /**
  * Array.prototype.join()
