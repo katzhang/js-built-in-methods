@@ -53,6 +53,12 @@ function concatReverse(array) {
 	return args.concat(array);
 }
 
+
+
+
+
+
+
 /**
  * Array.prototype.every()
  *
@@ -91,11 +97,66 @@ function concatReverse(array) {
  */
  function useForEach() {
  	function addOne(el, i, array) {
- 		array[i] = el+1;
+ 		array[i] = el + 1;
  	}
 
  	console.log([1, 2, 3].forEach(addOne)); //Outputs undefined. But the original array is now [2, 3, 4].  
  }
+
+ /**
+ * Array.prototype.map()
+ *
+ * @param {callback(value, index, array)[, thisArg]} Callback function to be executed on every element. 
+ * @returns {array} Returns a new array of the elements produced by the callback function.
+ */
+ function useMap() {
+ 	function addOne(el, i, array) {
+ 		return el + 1;
+ 	}
+
+ 	console.log([1, 2, 3].forEach(addOne)); //Outputs [2, 3, 4]. Unlike forEach, the value returned from callback is added to the same index of a new array.
+ }
+
+//Variants: map() can also be used on strings or array-like objects. 
+function useMapString(str) {
+	var codeArray = Array.prototype.map.call(str, function(x) {
+		return x.charCodeAt(0);
+	})
+	return codeArray;
+}
+
+ /**
+ * Array.prototype.reduce()
+ *
+ * @param {callback(previousValue, value, index, array)[, initialValue]} Callback function to be executed againt an accumulator, from left to right.
+ * @returns {value} Returns a single value.
+ */
+ function useReduce() {
+ 	var array = [1, 2, 3];
+ 	var output = array.reduce(function(a, b) {
+ 		return a * b;
+ 	})
+ 	console.log([output); //Outputs 6.
+}
+
+ /**
+ * Array.prototype.reduceRight()
+ *
+ * @param {callback(previousValue, value, index, array)[, initialValue]} Callback function to be executed againt an accumulator, from right to left.
+ * @returns {value} Returns a single value.
+ */
+ function useReduceRight() {
+ 	var array = [1, 2, 3];
+ 	var output = array.reduce(function(a, b) {
+ 		return a * b;
+ 	})
+ 	console.log([output); //Outputs 6.
+}
+
+ 
+
+
+
 
  /**
  * Array.prototype.indexOf()
@@ -114,6 +175,23 @@ function concatReverse(array) {
 
  }
 
+  /**
+ * Array.prototype.lastIndexOf()
+ *
+ * @param {value[, index]} Pass in the value you want to search and optionally the index to start from. Search backwards.
+ * @returns {index} Returns the last index at which a given element can be found, or -1 if it is not present.
+ */
+ function useLastIndexOf() {
+ 	var array = ['a', 'b', 'c', 'a', 'b', 'c'];
+
+ 	console.log(array.lastIndexOf('a')); //Outputs 3.
+ 	console.log(array.lastIndexOf('a', 1)); //Outputs 0.
+ 	console.log(array.lastIndexOf('a', -1)); //Outputs 3. When negative index is passed in, the start position will be array.length + negative index.
+ 	console.log(array.lastIndexOf('a', -3)); //Outputs 3.
+ 	console.log(array.lastIndexOf('a', -10)); //Outputs -1. When even the calculated index is negative, returns -1.
+
+ }
+
  /**
  * Array.prototype.join()
  *
@@ -126,5 +204,74 @@ function concatReverse(array) {
  	console.log(array.join('')); //Outputs 'abcabc'.
  	console.log(array.join(' ')); //Outputs 'a b c a b c'.
  	console.log(array.join()); //Outputs 'a,b,c,a,b,c'.
+
+ }
+
+ /**
+ * Array.prototype.pop()
+ *
+ * @returns {value} Returns the last element that has just been removed.
+ */
+ //Notice that the method does not create a new array; it simply changes the old one. Also it is generic so can be called/applied on array-like objects.
+ function usePop() {
+ 	var array = ['a', 'b', 'c'];
+
+ 	console.log(array.pop()); //Outputs 'c'.
+ 	console.log(array); //Outputs ['a', 'b'].
+
+ }
+
+ /**
+ * Array.prototype.shift()
+ *
+ * @returns {value} Returns the first element that has just been removed.
+ */
+ //Notice that the method does not create a new array; it simply changes the old one. Also it is generic so can be called/applied on array-like objects.
+ function useShift() {
+ 	var array = ['a', 'b', 'c'];
+
+ 	console.log(array.shift()); //Outputs 'a'.
+ 	console.log(array); //Outputs ['b', 'c'].
+
+ }
+
+ /**
+ * Array.prototype.push()
+ *
+ * @param {value1, value2, ..., valuen} Elements to be added to the end.
+ * @returns {number} Returns the new length of the array.
+ */
+ //Notice that the method does not create a new array; it simply changes the old one.
+ function usePush() {
+ 	var array = ['a', 'b', 'c'];
+
+ 	console.log(array.push('d', 'e')); //Outputs 5.
+ 	console.log(array); //Outputs ['a', 'b', 'c', 'd', 'e'].
+ }
+
+ /**
+ * Array.prototype.unshift()
+ *
+ * @param {value1, value2, ..., valuen} Elements to be added to the beginning.
+ * @returns {number} Returns the new length of the array.
+ */
+ //Notice that the method does not create a new array; it simply changes the old one.
+ function useUnshift() {
+ 	var array = ['a', 'b', 'c'];
+
+ 	console.log(array.unshift('d', 'e')); //Outputs 5.
+ 	console.log(array); //Outputs ['d', 'e', 'a', 'b', 'c'].
+ }
+
+  /**
+ * Array.prototype.reverse()
+ *
+ */
+ //Notice that the method does not create a new array; it simply changes the old one. 
+ function useReverse() {
+ 	var array = ['a', 'b', 'c'];
+
+ 	array.reverse(); 
+ 	console.log(array); //Outputs ['c', 'b', 'a'].
 
  }
