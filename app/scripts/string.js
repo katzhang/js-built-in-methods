@@ -6,6 +6,14 @@
  */
 console.log(String.fromCharCode(65, 66, 67)); //Outputs "ABC"
 
+
+
+////////////////////////////////////////////////////////////////////////
+//
+//Location methods: pass in indexes to locate character/character code, or
+//pass in indexes to get characters
+//
+////////////////////////////////////////////////////////////////////////
 /**
  * String.prototype.charAt(index)
  *
@@ -44,10 +52,11 @@ console.log('abca'.lastIndexOf('a')); //Outputs 3
 console.log('abca'.lastIndexOf('a', 2)); //Outputs 0
 
 
-
-
-
-
+////////////////////////////////////////////////////////////////////////
+//
+//Concat methods: avoid using
+//
+////////////////////////////////////////////////////////////////////////
 /**
  * String.prototype.concat(string1, string2, ...stringn)
  *
@@ -59,8 +68,11 @@ console.log('abc'.concat('d', 'e')); //Outputs "abcde"
 
 
 
-
-
+////////////////////////////////////////////////////////////////////////
+//
+//Regular Expression methods: match, replace, search
+//
+////////////////////////////////////////////////////////////////////////
 /**
  * String.prototype.match(regex)
  *
@@ -92,8 +104,6 @@ console.log('abcabc'.search(/e/)); //Outputs -1
 
 
 
-
-
 /**
  * String.prototype.link(url)
  *
@@ -105,7 +115,11 @@ console.log('this is a google link'.link('http://www.google.com')); //Outputs "<
 
 
 
-
+////////////////////////////////////////////////////////////////////////
+//
+//String manipulation methods: move/get sub strings
+//
+////////////////////////////////////////////////////////////////////////
  /**
  * String.prototype.slice(beginIndex[, endIndex])
  *
@@ -142,7 +156,11 @@ console.log('abcde'.substr(1,-3)); //Outputs ""
 
 
 
-
+////////////////////////////////////////////////////////////////////////
+//
+//Split methods: convert strings to arrays
+//
+////////////////////////////////////////////////////////////////////////
 
  /**
  * String.prototype.split(separator) (counterpart of Array.prototype.join())
@@ -153,6 +171,14 @@ console.log('abcde'.substr(1,-3)); //Outputs ""
 console.log('abc'.split()); //Outputs ["abc"]
 console.log('abc'.split('')); //Outputs ["a", "b", "c"]
 console.log('a,b,c'.split(',')); //Outputs ["a", "b", "c"]
+
+
+
+////////////////////////////////////////////////////////////////////////
+//
+//Others: convert to all lower case, upper case or trim white space
+//
+////////////////////////////////////////////////////////////////////////
 
  /**
  * String.prototype.toLowerCase()
